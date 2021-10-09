@@ -1,0 +1,62 @@
+@startuml
+package Client <<Rectangle>> {
+    abstract class Duck {
+        FlyBehavior flyBehavior
+        QuackBehavior quackBehavior
+        swim()
+        display()
+        performQuack()
+        performFly()
+        setFlyBehavior()
+        setQuackBehavior()
+    }
+    class MallardDuck {
+        fly()
+    }
+    class RedheadDuck {
+        fly()
+    }
+    class RubberDuck {
+        fly()
+    }
+    class DecoydDuck {
+        fly()
+    }
+}
+
+package EncapsulatedFlyBehavior <<Rectangle>> {
+    interface FlyBehavior {
+        fly()
+    }
+    class FlyWithWing implements FlyBehavior {
+        fly()
+    }
+    class FlyNoWay implements FlyBehavior {
+        fly()
+    }
+}
+
+package EncapsulatedQuackBehavior <<Rectangle>> {
+    interface QuackBehavior {
+        quack()
+    }
+    class Quack implements QuackBehavior {
+        quack()
+    }
+    class MuteQuack implements QuackBehavior {
+        quack()
+    }
+    class Squeak implements QuackBehavior {
+        quack()
+    }
+}
+
+Duck <|-- MallardDuck 
+Duck <|-- RedheadDuck
+Duck <|-- RubberDuck
+Duck <|-- DecoydDuck
+
+Duck::flyBehavior   --> FlyBehavior
+Duck::quackBehavior --> QuackBehavior
+
+@enduml
